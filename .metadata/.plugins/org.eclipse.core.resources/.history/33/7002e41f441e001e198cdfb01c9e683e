@@ -1,0 +1,5 @@
+package app.commerce.dao;
+
+public interface UserRepository {
+
+}

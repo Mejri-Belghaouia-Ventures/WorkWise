@@ -1,0 +1,5 @@
+package app.commerce.data;
+
+public class Credentials {
+
+}

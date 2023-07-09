@@ -1,0 +1,8 @@
+package app.commerce.jwt;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class jwtTokenUtil {
+
+}

@@ -1,0 +1,9 @@
+package app.commerce.data;
+
+import lombok.Data;
+
+@Data
+public class Credentials {
+  String email;
+  String password;
+}

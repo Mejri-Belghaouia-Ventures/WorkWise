@@ -1,0 +1,7 @@
+package app.commerce.jwt;
+
+import org.springframework.web.filter.OncePerRequestFilter;
+
+public class JwtRequestFiltter extends OncePerRequestFilter {
+  
+}
