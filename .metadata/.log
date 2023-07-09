@@ -923,3 +923,57 @@ java.lang.InterruptedException
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-09 22:10:06.716
 !MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.JvpRFcNI => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-09 22:12:46.770
+!MESSAGE Entering DelegatingStreamConnectionProvider()
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-09 22:12:46.770
+!MESSAGE DelegatingStreamConnectionProvider classloader = org.eclipse.osgi.internal.loader.EquinoxClassLoader@6c2d124e[org.springframework.tooling.boot.ls:1.15.0.202001210741(id=632)]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-09 22:12:46.771
+!MESSAGE SpringBootLanguageServer exists!
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-09 22:12:56.023
+!MESSAGE Boot LS startup time from start to initialized: 9250ms
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-09 22:12:56.107
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.BSOYwPtPisBatched = true
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-09 22:12:56.108
+!MESSAGE subscribing to classpath changes: sts4.classpath.BSOYwPtP isBatched = true
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-09 22:12:56.109
+!MESSAGE Setting up ClasspathListenerManager
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-09 22:12:56.110
+!MESSAGE subsribers = {sts4.classpath.BSOYwPtP=Send Classpath Notifications(4878)}
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-09 22:12:56.110
+!MESSAGE Sending initial event for all projects ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-09 22:12:56.111
+!MESSAGE project backend ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-09 22:12:56.113
+!MESSAGE Sending initial event for all projects DONE
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-09 22:12:56.114
+!MESSAGE Preparing classpath changed notification backend
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-09 22:12:56.114
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.BSOYwPtP => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-09 22:12:56.115
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-09 22:12:56.344
+!MESSAGE classpath=121 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-09 22:12:56.351
+!MESSAGE buffering callback sts4.classpath.BSOYwPtP backend false 121
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-09 22:12:56.352
+!MESSAGE executing callback sts4.classpath.BSOYwPtP 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-09 22:12:56.381
+!MESSAGE executing callback sts4.classpath.BSOYwPtP SUCCESS [done]
