@@ -12,9 +12,11 @@ import app.commerce.entities.User;
 
 public class MyUserDetails implements UserDetails {
     private User user;
+	
 	public  MyUserDetails(User u) {
 		this.user=u;
 	}
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<SimpleGrantedAuthority> authorities=new ArrayList<>();
@@ -56,7 +58,7 @@ public class MyUserDetails implements UserDetails {
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
-		return true;
+		return user.isEnabled();
 	}
 
 }
