@@ -36,12 +36,10 @@ public class AuthController {
 	jwtTokenUtil jwtTokenUtil;
 	
 	@PostMapping("/signup")
-	public ResponseEntity<?> signUp(@RequestBody User user_added){
-		
-		user_added.setEmail();
-		user_added.setPassword(security.passwordEncoder().encode(user.getPassword()));
-		userRepo.save(user_added);
-		return new ResponseEntity<>(user_added,HttpStatus.OK);
+	public ResponseEntity<?> signUp(@RequestBody User user){
+		user.setPassword(security.passwordEncoder().encode(user.getPassword()));
+		userRepo.save(user);
+		return new ResponseEntity<>(user,HttpStatus.OK);
 	}
 	
 	@PostMapping("/login")
