@@ -7,11 +7,9 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import app.commerce.dao.UserRepository;
 import app.commerce.data.Credentials;
@@ -19,7 +17,6 @@ import app.commerce.entities.User;
 import app.commerce.jwt.jwtTokenUtil;
 import app.commerce.security.SecurityConfig;
 import app.commerce.security.UserDetailsServiceImpl;
-import app.commerce.service.UserService;
 import net.minidev.json.JSONObject;
 
 @RestController
@@ -34,9 +31,6 @@ public class AuthController {
     UserDetailsServiceImpl userservice;
 	@Autowired
 	AuthenticationManager authenticationManager; 
-	
-	@Autowired
-	UserService userService;
 	
 	@Autowired
 	jwtTokenUtil jwtTokenUtil;
@@ -67,11 +61,6 @@ public class AuthController {
 		res.appendField("token", token);
 		res.appendField("user", user_det);
 		return ResponseEntity.ok().body(res);
-	}
-	
-	@GetMapping("/ExistEmail")
-	public boolean ExistEmail(@RequestParam("email")String email) {
-		return userService.getByEmail(email)==null ? true : false;
 	}
 
 }

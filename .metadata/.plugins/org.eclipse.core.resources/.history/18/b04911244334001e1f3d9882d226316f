@@ -1,0 +1,9 @@
+package app.commerce.service;
+
+import app.commerce.entities.User;
+
+public class UserService {
+  public User getByEmail() {
+	  
+  }
+}

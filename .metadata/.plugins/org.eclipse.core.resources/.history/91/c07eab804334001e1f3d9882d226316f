@@ -19,7 +19,6 @@ import app.commerce.entities.User;
 import app.commerce.jwt.jwtTokenUtil;
 import app.commerce.security.SecurityConfig;
 import app.commerce.security.UserDetailsServiceImpl;
-import app.commerce.service.UserService;
 import net.minidev.json.JSONObject;
 
 @RestController
@@ -34,9 +33,6 @@ public class AuthController {
     UserDetailsServiceImpl userservice;
 	@Autowired
 	AuthenticationManager authenticationManager; 
-	
-	@Autowired
-	UserService userService;
 	
 	@Autowired
 	jwtTokenUtil jwtTokenUtil;
@@ -70,8 +66,8 @@ public class AuthController {
 	}
 	
 	@GetMapping("/ExistEmail")
-	public boolean ExistEmail(@RequestParam("email")String email) {
-		return userService.getByEmail(email)==null ? true : false;
+	public ExistEmail(@RequestParam("email")String email) {
+		
 	}
 
 }

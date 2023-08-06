@@ -1,23 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Routes ,RouterModule} from '@angular/router';
-import { AppComponent } from './app.component';
-import { LoginComponentComponent } from './Auth/login-component/login-component.component';
-import { SignUpComponentComponent } from './Auth/sign-up-component/sign-up-component.component';
+import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [
-  {path:"",component:AppComponent},
-  {path:"login",component:LoginComponentComponent},
-  {path:"signup",component:SignUpComponentComponent},
-]
+const routes: Routes = [];
+
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    RouterModule.forRoot(routes)
-  ],
-  exports:[
-    RouterModule
-  ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

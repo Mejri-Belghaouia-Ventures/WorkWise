@@ -71,7 +71,7 @@ public class AuthController {
 	
 	@GetMapping("/ExistEmail")
 	public boolean ExistEmail(@RequestParam("email")String email) {
-		return userService.getByEmail(email)==null ? true : false;
+		return user
 	}
 
 }
