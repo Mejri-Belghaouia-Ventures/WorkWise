@@ -1,1 +1,48 @@
-<p>sign-up works!</p>
+<div class="d-flex justify-content-center p-3 m-4" data-aos="flip-right">
+  <div class="col-xl-10 col-md-12 col-lg-12">
+      <div class="row shadow-lg rounded">
+          <div class="col-lg-6">
+              <div class="text-center">
+                  <div class="h4 fw-bolder mb-3 py-3">
+                      SignUp
+                  </div>
+              </div>
+              <form class="py-3" [formGroup]="SignUpForm" (ngSubmit)="SignUpUser()" method="Post">
+                  <div class="row mb-5">
+                      <div class="col-lg-6">
+                        <label>EMAIL</label>
+                        <input matInput type="text" [formControl]="emailRegister" class="form-control" name="email">
+                        <mat-error *ngIf="emailRegister.invalid">{{getErrorEmail()}}</mat-error>
+                      </div>
+                      <div class="col-lg-6 mb-4">
+                        <label>Password</label>
+                        <input matInput  [formControl]="PasswordRegister" [type]="hide ? 'password' : 'text'" class="form-control" name="password">
+                        <span class="input-group-btn">
+                            <button (click)="hide=!hide" class="btn btn-primary">
+                              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                        </span>
+                        <mat-error *ngIf="PasswordRegister.invalid">{{getPasswordError()}}</mat-error>
+                      </div>
+                      <div class="col-lg-12 mt-2">
+                        <Label>Role</Label>
+                        <select  class="form-control" name="role"   [formControl]="RoleRegister">
+                            <option  *ngFor="let role of roles" [value]="role">{{role}}</option>
+                        </select>
+                        <mat-error *ngIf="RoleRegister.invalid">{{getRoleError()}}</mat-error>
+                      </div>
+                      <div class="text-center mt-2">
+                         <button type="submit" class="btn btn-success">SignUp</button>
+                      </div>
+                      <div class="mt-4 text-muted text-center">
+                          Already Have Account ? <a routerLink="/">Login</a>
+                      </div>
+                  </div>
+              </form>
+          </div>
+          <div class="col-lg-6 d-none d-lg-block bg-secondary">
+              <img width="100%" height="100%" src="../../../assets/signup.png">
+          </div>
+      </div>
+  </div>
+</div>

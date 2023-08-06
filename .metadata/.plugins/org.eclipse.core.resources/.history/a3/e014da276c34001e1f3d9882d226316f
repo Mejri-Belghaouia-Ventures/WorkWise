@@ -7,7 +7,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,12 +41,11 @@ public class AuthController {
 	@Autowired
 	jwtTokenUtil jwtTokenUtil;
 	
-	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/signup")
 	public ResponseEntity<?> signUp(@RequestBody User user){
 		User user_added=new User();
 		user_added.setEmail(user.getEmail());
-		user_added.setRole(user.getRole());
+		user_added.setRole("Client");
 		user_added.setPassword(security.passwordEncoder().encode(user.getPassword()));
 		userRepo.save(user_added);
 		return new ResponseEntity<>(user_added,HttpStatus.OK);
