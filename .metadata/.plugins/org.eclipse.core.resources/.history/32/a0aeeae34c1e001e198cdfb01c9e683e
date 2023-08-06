@@ -1,6 +1,0 @@
-package app.commerce.data;
-
-public class Credentials {
-  string email;
-  string password;
-}

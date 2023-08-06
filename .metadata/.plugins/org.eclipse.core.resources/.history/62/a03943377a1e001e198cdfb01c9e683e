@@ -1,5 +1,0 @@
-package app.commerce.jwt;
-
-public class JwtAuthenticationEntryPoint {
-
-}

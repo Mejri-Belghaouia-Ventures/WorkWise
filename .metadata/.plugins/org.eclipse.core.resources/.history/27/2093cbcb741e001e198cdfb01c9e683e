@@ -1,7 +1,0 @@
-package app.commerce.jwt;
-
-import java.io.Serializable;
-
-public class JwtTokenUtil implements Serializable{
-
-}

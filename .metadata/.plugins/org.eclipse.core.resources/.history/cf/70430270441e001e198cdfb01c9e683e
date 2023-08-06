@@ -1,7 +1,0 @@
-package Security;
-
-import org.springframework.security.core.userdetails.UserDetails;
-
-public class MyUserDetails implements UserDetails {
-
-}
