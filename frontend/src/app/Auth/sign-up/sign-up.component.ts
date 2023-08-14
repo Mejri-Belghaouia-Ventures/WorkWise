@@ -14,14 +14,14 @@ export class SignUpComponent implements OnInit {
     this.SignUpForm=this.formbuiled.group({
       email:this.emailRegister,
       password:this.PasswordRegister,
-      Role:this.RoleRegister
+      role:this.RoleRegister
     });
    }
 
    emailRegister=new FormControl('',[Validators.required,
     Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,10}$')]);
 
-    PasswordRegister = new FormControl('', [Validators.required])
+    PasswordRegister = new FormControl('', [Validators.required]);
     RoleRegister=new FormControl('',[Validators.required]);
     getPasswordError(){
       if(this.PasswordRegister.touched){
@@ -40,6 +40,7 @@ export class SignUpComponent implements OnInit {
       }
       return '';
     }
+
     getErrorEmail(){
       if(this.PasswordRegister.touched){
         if(this.PasswordRegister.hasError("required")){
@@ -57,6 +58,7 @@ export class SignUpComponent implements OnInit {
 
   SignUpUser(){
     if(this.SignUpForm.valid){
+      console.log(this.SignUpForm.value);
       this.AuthServicesService.RegisterUser(
         this.SignUpForm.value
       ).subscribe((data:any)=>{

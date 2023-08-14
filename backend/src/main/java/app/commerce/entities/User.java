@@ -9,7 +9,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Entity
 @Data@AllArgsConstructor@NoArgsConstructor
 public class User {
@@ -25,6 +24,8 @@ public class User {
 	private boolean enabled;
 	
 	private String role;
+
+	
 
 }
 

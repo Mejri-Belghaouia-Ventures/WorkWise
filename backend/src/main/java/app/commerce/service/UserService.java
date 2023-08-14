@@ -12,6 +12,7 @@ public class UserService {
 	
 	@Autowired
 	UserRepository userRepo;
+	
   public User getByEmail(String email) {
 	  try {
 		  return userRepo.getUserByemail(email);
