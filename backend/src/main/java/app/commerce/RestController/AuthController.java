@@ -25,6 +25,7 @@ import net.minidev.json.JSONObject;
 
 @RestController
 @RequestMapping("/auth")
+@CrossOrigin(origins = "http://localhost:4200")
 public class AuthController {
   
 	@Autowired
@@ -42,7 +43,7 @@ public class AuthController {
 	@Autowired
 	jwtTokenUtil jwtTokenUtil;
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+
 	@PostMapping("/signup")
 	public ResponseEntity<?> signUp(@RequestBody User user){
 		User user_added=new User();
