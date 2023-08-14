@@ -11,6 +11,10 @@ export class AuthServicesService {
   constructor(private http:HttpClient) {
   }
   RegisterUser(user:any){
-    return this.http.post(`${environment.apiSpring}/signup`,user);
+    return this.http.post(`${environment.apiSpring}/auth/signup`,user);
   }
+  ExistEmail(email:String){
+    return this.http.get(`${environment.apiSpring}/auth/ExistEmail?email=`+email);
+  }
+
 }

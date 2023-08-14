@@ -1,6 +1,7 @@
 package app.commerce.RestController;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -23,9 +24,9 @@ import app.commerce.security.UserDetailsServiceImpl;
 import app.commerce.service.UserService;
 import net.minidev.json.JSONObject;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin(origins = "http://localhost:4200")
 public class AuthController {
   
 	@Autowired
@@ -73,8 +74,12 @@ public class AuthController {
 	}
 	
 	@GetMapping("/ExistEmail")
-	public boolean ExistEmail(@RequestParam("email")String email) {
-		return userServiceTest.getByEmail(email)==null ? true : false;
+	public ResponseEntity<?> ExistEmail(@RequestParam("email")String email) {
+		 if(userServiceTest.getByEmail(email)==null ) {
+			 return ResponseEntity.ok().body(false);
+		 }else {
+			 return ResponseEntity.ok().body(true);
+		 }
 	}
 
 }

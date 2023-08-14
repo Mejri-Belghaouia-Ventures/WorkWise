@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AuthServicesService } from 'src/app/Services/auth-services.service';
 import { Router } from '@angular/router';
+import { ValidService } from '../valid.service';
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -10,7 +12,7 @@ import { Router } from '@angular/router';
 export class SignUpComponent implements OnInit {
   roles=["Client","Prestataire"]
   hide=true;
-  constructor(private router:Router,private formbuiled:FormBuilder,private AuthServicesService:AuthServicesService) {
+  constructor(private router:Router,private ValidService:ValidService,private formbuiled:FormBuilder,private AuthServicesService:AuthServicesService) {
     this.SignUpForm=this.formbuiled.group({
       email:this.emailRegister,
       password:this.PasswordRegister,
@@ -19,7 +21,7 @@ export class SignUpComponent implements OnInit {
    }
 
    emailRegister=new FormControl('',[Validators.required,
-    Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,10}$')]);
+    Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,10}$')],this.ValidService.EmailValideSignUp());
 
     PasswordRegister = new FormControl('', [Validators.required]);
     RoleRegister=new FormControl('',[Validators.required]);
@@ -42,9 +44,11 @@ export class SignUpComponent implements OnInit {
     }
 
     getErrorEmail(){
-      if(this.PasswordRegister.touched){
-        if(this.PasswordRegister.hasError("required")){
+      if(this.emailRegister.touched){
+        if(this.emailRegister.hasError("required")){
           return "You must enter a value";
+        }else if(this.emailRegister.hasError("EmailFound")){
+          return "Email Already Used";
         }else{
           return "Not A Valid Email";
         }
@@ -58,7 +62,6 @@ export class SignUpComponent implements OnInit {
 
   SignUpUser(){
     if(this.SignUpForm.valid){
-      console.log(this.SignUpForm.value);
       this.AuthServicesService.RegisterUser(
         this.SignUpForm.value
       ).subscribe((data:any)=>{

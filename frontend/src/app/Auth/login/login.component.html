@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-center m-4 p-3" data-aos="flip-left"> 
-    <div class="col-lg-12 col-xl-10">
+    <div class="col-xl-10 col-md-12 col-lg-12">
         <div class="row shadow-lg rounded">
-            <div class="col-lg-6  d-lg-block bg-danger">
+            <div class="col-lg-6 d-none  d-lg-block bg-danger">
                 <img src="../../../assets/signup.png" width="100%" height="100%" alt="">
             </div>
             <div class="col-lg-6">
@@ -10,17 +10,19 @@
                                 Login
                         </div>
                 </div>
-                <form class="py-3" action="">
+                <form  [formGroup]="LoginFrom" (ngSubmit)="LoginUser()" class="py-3" action="POST">
                     <div class="mb-3 mt-3">
                         <Label>Email</Label>
-                        <input type="text" class="form-control">
+                        <input matInput [formControl]="emailRegister" name="email" type="text" class="form-control">
+                        <mat-error *ngIf="emailRegister.invalid">{{getEmailError()}}</mat-error>
                     </div>
                     <div>
                         <Label>Password</Label>
-                        <input  type="password" class="form-control">
+                        <input  matInput [formControl]="passwordRegister" name="password" type="password" class="form-control">
+                        <mat-error *ngIf="passwordRegister.invalid">{{getPasswordError()}}</mat-error>
                     </div>
                     <div class="text-center py-2 mt-5">
-                        <button class="mt-5" class="btn btn-success">Login</button>
+                        <button class="mt-5" class="btn btn-success" [disabled]="LoginFrom.invalid">Login</button>
                     </div>
                     <div class="text-center">
                         Create An Account <a routerLink="/signup">SignUp</a>
