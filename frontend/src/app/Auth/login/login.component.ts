@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ValidService } from '../valid.service';
-
+import { LoginService } from 'src/app/Services/login.service';
+import {Store} from "@ngxs/store"
+import { SetIsAuth, SetToken, SetUser } from 'src/app/Store/action';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,7 +11,7 @@ import { ValidService } from '../valid.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private formbuilder:FormBuilder,private ValidService:ValidService) { 
+  constructor(private formbuilder:FormBuilder,private store:Store,private LoginService:LoginService,private ValidService:ValidService) { 
     this.LoginFrom=this.formbuilder.group({
       email:this.emailRegister,
       password:this.passwordRegister
@@ -53,7 +55,13 @@ export class LoginComponent implements OnInit {
 
   LoginUser(){
     if(this.LoginFrom.valid){
-
+        this.LoginService.login(this.LoginFrom.value).subscribe((res:any)=>{
+            this.store.dispatch([
+                new SetToken(res.token),
+                new SetIsAuth(true),
+                new SetUser(res.user)
+            ]);
+        })
     }else{
       
       this.emailRegister.markAsTouched();

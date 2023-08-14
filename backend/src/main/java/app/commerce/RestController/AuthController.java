@@ -66,10 +66,11 @@ public class AuthController {
 			return new ResponseEntity<String>("Incorrect email or password",HttpStatus.CONFLICT);
 		}
 		UserDetails user_det=userservice.loadUserByUsername(auth.getEmail());
+		User user=userServiceTest.getByEmail(auth.getEmail());
 		String token=jwtTokenUtil.generateToken(user_det);
 		JSONObject res=new JSONObject();
 		res.appendField("token", token);
-		res.appendField("user", user_det);
+		res.appendField("user", user);
 		return ResponseEntity.ok().body(res);
 	}
 	
