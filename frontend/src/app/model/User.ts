@@ -1,12 +1,8 @@
 export class User{
-  email:String;
-  password:String;
-  role:String;
-
-  constructor(){
-    this.email="";
-    this.password="";
-    this.role="";
+  constructor(  
+    public _id:String,
+    public email:String,
+    public password:String,
+    public role:String ){
   }
-
 }
