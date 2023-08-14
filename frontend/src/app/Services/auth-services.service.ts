@@ -16,5 +16,6 @@ export class AuthServicesService {
   ExistEmail(email:String){
     return this.http.get(`${environment.apiSpring}/auth/ExistEmail?email=`+email);
   }
+  
 
 }
