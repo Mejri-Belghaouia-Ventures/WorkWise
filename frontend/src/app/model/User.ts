@@ -3,6 +3,7 @@ export class User{
     public _id:String,
     public email:String,
     public password:String,
-    public role:String ){
+    public role:String 
+  ){
   }
 }
