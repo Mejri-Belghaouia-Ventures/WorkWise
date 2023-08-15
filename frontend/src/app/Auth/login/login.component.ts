@@ -72,6 +72,9 @@ export class LoginComponent implements OnInit {
                 new SetIsAuth(true),
                 new SetUser(res.user)
             ]);
+            if(this.store.selectSnapshot(s=>s.AuthStore.user['role'])=="Client"){
+              this.router.navigate(["/client"]);
+            }
         },(error:any)=>{
           if(error.error=='INVALID_CREDENTIALS'){
               this.loginError="INVALID CREDENTIALS";
