@@ -2,7 +2,7 @@ import { Action, Actions, Selector, State, StateContext } from "@ngxs/store";
 import { User } from "../model/User";
 import { Injectable } from "@angular/core";
 import { SetToken,SetIsAuth,SetUser,LogOut } from "./action";
-import { patch } from "@ngxs/store/operators";
+
 
 export class AuthModel{
     isAuth:boolean=false;
@@ -58,7 +58,7 @@ export class AuthState{
     }
 
     @Action(LogOut)
-    LogOut({setState,patchState}:StateContext<AuthModel>){
+    LogOut({getState,patchState}:StateContext<AuthModel>){
         patchState({
             isAuth:false,
             user:null,
