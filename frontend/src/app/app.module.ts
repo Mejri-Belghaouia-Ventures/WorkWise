@@ -11,13 +11,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxsModule } from '@ngxs/store';
 import { AuthState } from './Store/state';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
-import { NgxsReduxDevtoolsPlugin, NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { LoadingComponentComponent } from './Loading/loading-component/loading-component.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    LoadingComponentComponent
   ],
   imports: [
     NgxsModule.forRoot([AuthState]),
