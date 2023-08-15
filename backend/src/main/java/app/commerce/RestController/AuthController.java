@@ -59,14 +59,17 @@ public class AuthController {
 	public ResponseEntity<?> login(@RequestBody Credentials auth){
 		try {
 			if(userRepo.findByEmail(auth.getEmail())==null) {
-				 return new ResponseEntity<String>("User not found",HttpStatus.CONFLICT);
+				 return new ResponseEntity<String>("USER_NOT_FOUND",HttpStatus.CONFLICT);
 			}
 			Authentication authsuser =authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(auth.getEmail(),auth.getPassword()));
 		}catch(Exception e) {
-			return new ResponseEntity<String>("Incorrect email or password",HttpStatus.CONFLICT);
+			return new ResponseEntity<String>("INVALID_CREDENTIALS",HttpStatus.CONFLICT);
 		}
 		UserDetails user_det=userservice.loadUserByUsername(auth.getEmail());
 		User user=userServiceTest.getByEmail(auth.getEmail());
+		if(!user.isEnabled()) {
+			return new ResponseEntity<String>("User_Disabled",HttpStatus.CONFLICT);
+		}
 		String token=jwtTokenUtil.generateToken(user_det);
 		JSONObject res=new JSONObject();
 		res.appendField("token", token);

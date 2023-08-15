@@ -10,7 +10,7 @@ export class LoadingComponentComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    setTimeout(()=>this.loading=true,3000);
+    setTimeout(()=>this.loading=false,3000);
   }
 
 }

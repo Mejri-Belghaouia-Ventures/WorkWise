@@ -4,6 +4,7 @@ import { ValidService } from '../valid.service';
 import { LoginService } from 'src/app/Services/login.service';
 import {Store} from "@ngxs/store"
 import { SetIsAuth, SetToken, SetUser } from 'src/app/Store/action';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,7 +12,7 @@ import { SetIsAuth, SetToken, SetUser } from 'src/app/Store/action';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private formbuilder:FormBuilder,private store:Store,private LoginService:LoginService,private ValidService:ValidService) { 
+  constructor(private snackbar:MatSnackBar,private formbuilder:FormBuilder,private store:Store,private LoginService:LoginService,private ValidService:ValidService) { 
     this.LoginFrom=this.formbuilder.group({
       email:this.emailRegister,
       password:this.passwordRegister
@@ -52,7 +53,7 @@ export class LoginComponent implements OnInit {
   }
 
    
-
+  loginError:string="";
   LoginUser(){
     if(this.LoginFrom.valid){
         this.LoginService.login(this.LoginFrom.value).subscribe((res:any)=>{
@@ -61,6 +62,18 @@ export class LoginComponent implements OnInit {
                 new SetIsAuth(true),
                 new SetUser(res.user)
             ]);
+        },(error:any)=>{
+          if(error.error=='INVALID_CREDENTIALS'){
+              this.loginError="INVALID CREDENTIALS";
+          }else if(error.error=="USER_NOT_FOUND"){
+            this.loginError=" USER NOT FOUND";
+          }else if(error.error=="User_Disabled"){
+            this.loginError="USER DISABLED";
+          }
+          this.snackbar.open(this.loginError,"close",{
+               duration:5000
+          }
+          );
         })
     }else{
       this.emailRegister.markAsTouched();
