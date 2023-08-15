@@ -1,0 +1,52 @@
+.preloader{
+    background-color: #f2f2f2; 
+    height: 100vh;
+    position: fixed;
+    z-index:99999999;
+    top:0;
+    left:0;
+    width: 100vw;
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-preloader span{
+    font-size: 100px;
+    position: relative;
+    font-weight: bold;
+    margin: 0 10px;
+    animation: enter-word 1s linear forwards;
+    opacity: 0;
+}
+
+@keyframes enter-word  {
+    0%{
+        opacity: 0;
+        filter: blur(4px);
+    }
+    100%{
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+.content-preloader span:nth-child(1){
+    animation-delay: .5s;
+}
+
+
+.content-preloader span:nth-child(2){
+    animation-delay: 1s;
+}
+
+.bottom-text{
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+    font-size: 15px;
+    color: #888;
+}
+ 
+  
