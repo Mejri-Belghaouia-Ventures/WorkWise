@@ -14,13 +14,15 @@ import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { LoadingComponentComponent } from './Loading/loading-component/loading-component.component';
 import { IntereceptorsService } from './intereceptors.service';
+import { PorfilCompoenentComponent } from './client/porfil-compoenent/porfil-compoenent.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignUpComponent,
-    LoadingComponentComponent
+    LoadingComponentComponent,
+    PorfilCompoenentComponent
   ],
   imports: [
     NgxsModule.forRoot([AuthState]),
