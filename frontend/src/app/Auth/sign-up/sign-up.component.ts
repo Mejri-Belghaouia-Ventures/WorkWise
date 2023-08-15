@@ -65,7 +65,7 @@ export class SignUpComponent implements OnInit {
       this.AuthServicesService.RegisterUser(
         this.SignUpForm.value
       ).subscribe((data:any)=>{
-         this.router.navigate(["/"]);
+         this.router.navigate(["/"],{queryParams:{message:"UserAdded With Success"}});
       })
     }else{
       this.emailRegister.markAsTouched();

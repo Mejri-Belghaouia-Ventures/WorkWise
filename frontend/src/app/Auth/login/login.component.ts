@@ -5,6 +5,7 @@ import { LoginService } from 'src/app/Services/login.service';
 import {Store} from "@ngxs/store"
 import { SetIsAuth, SetToken, SetUser } from 'src/app/Store/action';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute,Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,7 +13,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private snackbar:MatSnackBar,private formbuilder:FormBuilder,private store:Store,private LoginService:LoginService,private ValidService:ValidService) { 
+  test="hello";
+  constructor(private router:Router,private ActivatedRoute:ActivatedRoute,private snackbar:MatSnackBar,private formbuilder:FormBuilder,private store:Store,private LoginService:LoginService,private ValidService:ValidService) { 
     this.LoginFrom=this.formbuilder.group({
       email:this.emailRegister,
       password:this.passwordRegister
@@ -20,11 +22,19 @@ export class LoginComponent implements OnInit {
   }
 
 
-
+  messageFromSignUp="";
   emailRegister=new FormControl('',[Validators.required,Validators.email],this.ValidService.EmailValide());
   passwordRegister=new FormControl('',[Validators.required]);
   ngOnInit(): void {
-   
+   this.ActivatedRoute.queryParams.subscribe((res:any)=>{
+    if(res['message']){
+      this.messageFromSignUp=res['message'];
+      setTimeout(()=>{
+        this.router.navigate([],{queryParams:{}});
+        this.messageFromSignUp=""
+      },3000);
+    }
+   })
   }
 
   LoginFrom:FormGroup;

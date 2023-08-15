@@ -1,4 +1,4 @@
-<app-loading-component></app-loading-component>
+<app-loading-component [messageFromSignUp]="test"></app-loading-component>
 <div class="d-flex justify-content-center m-4 p-3" data-aos="flip-left"> 
     <div class="col-xl-10 col-md-12 col-lg-12">
         <div class="row shadow-lg rounded">
@@ -7,8 +7,11 @@
             </div>
             <div class="col-lg-6">
                 <div class="text-center">
+                    <div class="alert alert-success" *ngIf="messageFromSignUp!=''"> 
+                        {{messageFromSignUp}}
+                    </div>
                         <div class="h4 fw-bolder mb-3 py-3">
-                                Login
+                            Login
                         </div>
                 </div>
                 <form  [formGroup]="LoginFrom" (ngSubmit)="LoginUser()" class="py-3" action="POST">

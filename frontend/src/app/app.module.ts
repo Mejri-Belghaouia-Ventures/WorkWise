@@ -7,12 +7,13 @@ import { LoginComponent } from './Auth/login/login.component';
 import { SignUpComponent } from './Auth/sign-up/sign-up.component';
 import { MaterialModule } from './material/material.module';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgxsModule } from '@ngxs/store';
 import { AuthState } from './Store/state';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { LoadingComponentComponent } from './Loading/loading-component/loading-component.component';
+import { IntereceptorsService } from './intereceptors.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,13 @@ import { LoadingComponentComponent } from './Loading/loading-component/loading-c
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+        provide:HTTP_INTERCEPTORS,
+        useClass:IntereceptorsService,
+        multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

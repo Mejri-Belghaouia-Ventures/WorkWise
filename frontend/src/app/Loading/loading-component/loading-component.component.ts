@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-loading-component',
@@ -6,8 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./loading-component.component.css']
 })
 export class LoadingComponentComponent implements OnInit {
-  loading=true;
-  constructor() { }
+  loading;
+
+  @Input() public messageFromSignUp:any;
+  
+  constructor() { 
+    console.log(this.messageFromSignUp);
+    
+    this.loading=this.messageFromSignUp==undefined ? true : false;
+  }
 
   ngOnInit(): void {
     setTimeout(()=>this.loading=false,3000);
